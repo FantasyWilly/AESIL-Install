@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd ~/install_sh/cm5
+cd ~/AESIL-Install/cm5
 
 sudo -v
 
