@@ -22,15 +22,16 @@ trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null || true' EXIT
 
 fix_ubuntu_sources() {
     FILE="/etc/apt/sources.list.d/ubuntu.sources"
+    TMP_FILE="$(mktemp)"
 
     echo "[修正] 檢查 ubuntu.sources..."
 
     if ! grep -q "noble-updates" "$FILE"; then
         echo "[修正] 更新 Suites..."
 
-        sudo awk '
+        awk '
         /^Suites:/ {
-            if ($0 ~ /noble$/) {
+            if ($0 == "Suites: noble") {
                 print "Suites: noble noble-updates noble-backports"
             } else {
                 print $0
@@ -38,10 +39,15 @@ fix_ubuntu_sources() {
             next
         }
         { print }
-        ' "$FILE" | sudo tee "$FILE" > /dev/null
+        ' "$FILE" > "$TMP_FILE"
 
+        sudo cp "$TMP_FILE" "$FILE"
+        rm -f "$TMP_FILE"
+
+        echo "[OK] 已更新 ubuntu.sources"
     else
-        echo "[OK] 已包含 noble noble-updates noble-backports"
+        echo "[OK] 已包含 noble-updates"
+        rm -f "$TMP_FILE"
     fi
 }
 
