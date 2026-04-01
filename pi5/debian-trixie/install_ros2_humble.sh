@@ -61,7 +61,7 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export MAKEFLAGS="-j$(nproc)"
 echo "$SEP"
 
-echo "[5/7] exclude Fast DDS / Connext"
+echo "[5/7] exclude Fast DDS / Connext / GUI / simulator "
 shopt -s globstar nullglob
 for d in \
   src/**/rmw_fastrtps \
