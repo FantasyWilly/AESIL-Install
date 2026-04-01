@@ -70,7 +70,13 @@ for d in \
   src/**/rmw_fastrtps_dynamic_cpp \
   src/**/rmw_connextdds \
   src/**/rmw_connextdds_common \
-  src/**/rmw_connextddsmicro
+  src/**/rmw_connextddsmicro \
+  src/**/rviz* \
+  src/**/rqt* \
+  src/**/qt_gui* \
+  src/**/gazebo* \
+  src/**/gz-* \
+  src/**/ign-*
 do
   if [ -d "$d" ]; then
     touch "$d/COLCON_IGNORE"
@@ -91,14 +97,14 @@ colcon build \
 echo "$SEP"
 
 echo "[7/7] Setting ROS2 environment"
-if ! grep -Fxq "source ${WORKSPACE}/install/setup.bash" ~/.bashrc; then
-    echo "source ${WORKSPACE}/install/setup.bash" >> ~/.bashrc
+if ! grep -Fxq "source ~/ros2_humble/install/setup.bash" ~/.bashrc; then
+    echo "source ~/ros2_humble/install/setup.bash" >> ~/.bashrc
 fi
 
-echo "Add to source ~/$WORKSPACE/setup.bash >> ~/.bashrc"
+echo "Add to source ~/ros2_humble/install/setup.bash >> ~/.bashrc"
 
 echo "$SEP"
 echo "Install successful"
 echo "[Next] Please run¡G"
-echo "source ${WORKSPACE}/install/setup.bash"
+echo "source ~/ros2_humble/install/setup.bash"
 echo "$SEP"
