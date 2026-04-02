@@ -97,14 +97,17 @@ colcon build \
 echo "$SEP"
 
 echo "[7/7] Setting ROS2 environment"
-if ! grep -Fxq "source ~/ros2_humble/install/setup.bash" ~/.bashrc; then
-    echo "source ~/ros2_humble/install/setup.bash" >> ~/.bashrc
+if ! grep -Fxq "source $WORKSPACE/install/setup.bash" ~/.bashrc; then
+    echo "source $WORKSPACE/install/setup.bash" >> ~/.bashrc
 fi
 
-echo "Add to source ~/ros2_humble/install/setup.bash >> ~/.bashrc"
-
+echo "Add to source $WORKSPACE/install/setup.bash >> ~/.bashrc"
 echo "$SEP"
-echo "Install successful"
-echo "[Next] Please run¡G"
-echo "source ~/ros2_humble/install/setup.bash"
+
+echo
+echo "? Done"
+echo "Run the following command to source the terminal:"
+echo
+echo "To run:"
+echo "source $WORKSPACE/install/setup.bash"
 echo "$SEP"
