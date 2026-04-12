@@ -68,7 +68,7 @@ sudo apt install -y \
     libtiff-dev \
     gfortran \
     openexr \
-    libatlas-base-dev \
+    libopenblas-dev \
     python3-dev \
     python3-numpy \
     libtbb-dev \
